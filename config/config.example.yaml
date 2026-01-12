@@ -1,0 +1,7 @@
+confluence:
+  base_url: https://vitalsource.atlassian.net/wiki
+  email: your.email@company.com
+  api_token: YOUR_API_TOKEN
+
+output:
+  path: ~/kb/confluence_docs
