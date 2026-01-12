@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Local configs (DO NOT COMMIT)
+config/config.yaml
+
+# Knowledge base output
+.kb/
+kb/
