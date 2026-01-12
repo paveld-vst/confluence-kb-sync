@@ -92,6 +92,24 @@ confluence-kb-sync/
 - edit `config/pages.yaml`
 - group page URLs by category
 
+### Output directory configuration
+
+The documentation is stored in a shared local directory outside of any project.
+This allows multiple projects to reuse the same knowledge base.
+
+It is recommended to use an **absolute path** in `config/config.yaml`
+to avoid platform-specific issues.
+
+#### Example (Windows)
+
+yaml >> output:
+  path: C:/Users/Your.Name/kb/confluence_docs
+  
+#### Example (Mac OS/Linux)
+
+yaml >>	output:
+  path: /Users/your.name/kb/confluence_docs
+
 ---
 
 ## Usage
