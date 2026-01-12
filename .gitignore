@@ -8,3 +8,6 @@ config/config.yaml
 # Knowledge base output
 .kb/
 kb/
+
+# Local test output
+kb_test/
