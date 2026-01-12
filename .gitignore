@@ -11,3 +11,6 @@ kb/
 
 # Local test output
 kb_test/
+
+# JetBrains IDE
+.idea/
