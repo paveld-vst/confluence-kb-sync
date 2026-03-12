@@ -1,22 +1,77 @@
 api:
   - https://vitalsource.atlassian.net/wiki/spaces/ZAI/pages/4591419583/Manage-related+APIs+Internal+Documentation
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/19572962/V4+Assets+API
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/2984640810/p2+vital_books+to+v4+Assets+migration+sheet
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/808484893/V4+Codes
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/5060165656/V4+System+User+Price+Type+Access+Levels+API+Overview
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/4866048066/Front+End+-+System+User+Price+Type+Access+Levels+API+Overview
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/4974379010/V4+Access+Codes+Upload+API
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/3306553345/VST+Search+API
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/3306553345/VST+Search+API?focusedCommentId=4962811984
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/2654371889/Bambam+Maintenance+and+Monitoring
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/19572694/V4+Users+API
   - https://vitalsource.atlassian.net/wiki/spaces/ZAI/pages/4591420478/API+Documentation+Template
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/19572888/V4+Product+Distributions+API
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/4865261642/Company+Price+Type+Access+Levels+API+Overview
   - https://vitalsource.atlassian.net/wiki/spaces/ZAI/pages/4591419719/V4+Products
   - https://vitalsource.atlassian.net/wiki/spaces/ZAI/pages/4591419761/V3+Refunds+API
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/4744808827/V4+Api+Keys
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/19572597/Booklist+Manager+Jobs+API
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/3306455045/Directory+Search+API
 
-flows:
+deployment_and_env:
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/3518955521/Manage+Development+Process
   - https://vitalsource.atlassian.net/wiki/spaces/ENG/pages/2077753873/Deploying+your+application
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/3518955521/Manage+Development+Process
 
-features:
+business_flows:
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/20216247/Understanding+distribution+sets+and+catalogs
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/20217584/Building+catalogs
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/20217579/Distribution+sets
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/20217696/Store+content
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/139493420/Distribution+Channels
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/5087690775/Enhanced+Price+Controls+EPC+Release+Plan
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4869488656/Enhanced+Price+Controls+Overview
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4561043544/Enhance+Price+Controls
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4869488656/Enhanced+Price+Controls+Overview#What-is-Enhanced-Price-Controls-(EPC)%3F
 
-misc:
+policies_and_processes:
   - https://vitalsource.atlassian.net/wiki/spaces/BOOKSHELF/pages/681017345/Engineering+Cheat+Sheet
   - https://vitalsource.atlassian.net/wiki/spaces/ENG/pages/2626257083/Engineering+Team+Names
   - https://vitalsource.atlassian.net/wiki/spaces/ENG/pages/2445377604/Engineering+All-Hand+Meetings
   - https://vitalsource.atlassian.net/wiki/spaces/~552874847/pages/2836267560/Specifications+Acceptance+Criteria+Refinement
+
+security_and_permissions:
+  - https://vitalsource.atlassian.net/wiki/spaces/VPP/pages/214040795/VitalSource+Information+Security+Policy
+  - https://vitalsource.atlassian.net/wiki/spaces/VPP/pages/19394295/VitalSource+Application+Security+Standards
+  - https://vitalsource.atlassian.net/wiki/spaces/INTREPID/pages/2454028454/Security+and+System+FAQs
+  -
+
+data_and_catalog:
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/20216247/Understanding+distribution+sets+and+catalogs
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/20217579
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/139493420
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/20217584
+
+platform_overview:
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/19572678/BAMBAM+Architecture
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/2654371889/Bambam+Maintenance+and+Monitoring
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/2306867388/Manage+Platform+Troubleshooting+Guide
+
+integrations:
+  - https://vitalsource.atlassian.net/wiki/spaces/PRODUCT/pages/2898619625/EA+Integration+Offboarding
+  - https://vitalsource.atlassian.net/wiki/spaces/IM/pages/4359815237/Virtual+Store+Integration+Set+up
+  - https://vitalsource.atlassian.net/wiki/spaces/SAL/pages/3381231734/Partner+Integration
+
+engeenering_and_teams:
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/26345690/Engineering+team
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/2926215298/Orca+Team+Point+Person+Rotation
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/2020212931/Manage+Teams+Areas+of+Focus
+  - https://vitalsource.atlassian.net/wiki/spaces/ENG/pages/2626257083/Engineering+Team+Names
+
+automation_testing:
+  - https://vitalsource.atlassian.net/wiki/spaces/PRODUCT/pages/2898569554/Testing+Automation
+  - https://vitalsource.atlassian.net/wiki/spaces/ACRO/pages/2627862643/QA+Automation+Test+Coverage+-+QA+Courses+Platform
+  - https://vitalsource.atlassian.net/wiki/spaces/~232557912/pages/3630924035/Proposal+Creation+of+a+Operations+Automation+Team
+  - https://vitalsource.atlassian.net/wiki/spaces/~6419ff19b05b4e3e7daa62a9/pages/4191060151/VST+QA+Testing+tools
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/1515062133/Manage+Automation

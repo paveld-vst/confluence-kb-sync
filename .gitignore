@@ -9,8 +9,10 @@ config/config.yaml
 .kb/
 kb/
 
-# Local test output
-kb_test/
 
 # JetBrains IDE
 .idea/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
