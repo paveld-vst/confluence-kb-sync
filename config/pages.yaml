@@ -23,6 +23,10 @@ deployment_and_env:
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/3518955521/Manage+Development+Process
   - https://vitalsource.atlassian.net/wiki/spaces/ENG/pages/2077753873/Deploying+your+application
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/3518955521/Manage+Development+Process
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4678910067/Manage+PT-OSC+Integration
+  - https://vitalsource.atlassian.net/wiki/spaces/~215226466/pages/4670652445/Using+pt-online-schema-change
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4548952237/Catalogs+Migration+with+pt-online-schema
+  - https://vitalsource.atlassian.net/wiki/spaces/IN/pages/4643815563/K8s+and+pt-online-schema-change
 
 business_flows:
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/20216247/Understanding+distribution+sets+and+catalogs
@@ -33,6 +37,10 @@ business_flows:
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/5087690775/Enhanced+Price+Controls+EPC+Release+Plan
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4869488656/Enhanced+Price+Controls+Overview
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4561043544/Enhance+Price+Controls
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/4866048066/Front+End+-+System+User+Price+Type+Access+Levels+API+Overview
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4348182584/VST+Billing+File+Overview
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4115529794/2025-02-11+-+Billing+Files+Not+Delivered
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/5060165656/V4+System+User+Price+Type+Access+Levels+API+Overview
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4869488656/Enhanced+Price+Controls+Overview#What-is-Enhanced-Price-Controls-(EPC)%3F
 
 policies_and_processes:
