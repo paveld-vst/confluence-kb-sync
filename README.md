@@ -1,6 +1,6 @@
 # Confluence KB Sync
 
-Confluence KB Sync is a lightweight Python utility that synchronizes selected Confluence Cloud pages into local 
+Confluence KB Sync is a lightweight Python tool that synchronizes selected Confluence Cloud pages into local 
 Markdown files and turns them into an AI-friendly knowledge layer inside your project.
 
 The main goal is not only to reduce context switching between the IDE and Confluence, but also to make internal 
@@ -129,16 +129,16 @@ confluence-kb-sync/
 
 Main components:
 
-config/config.example.yaml — example local configuration
-config/config.yaml — local Confluence credentials and output path
-config/pages.yaml — selected Confluence page URLs grouped by category
-src/main.py — main sync flow and project cache refresh
-src/config_loader.py — YAML config loading and validation
-src/confluence_client.py — Confluence API access
-src/page_parser.py — page ID extraction from Confluence URLs
-src/markdown_builder.py — AI-friendly Markdown generation
-src/file_writer.py — category-based file output
-src/index_builder.py — root and category index generation
+- `config/config.example.yaml` — example local configuration
+- `config/config.yaml` — local Confluence credentials and output path
+- `config/pages.yaml` — selected Confluence page URLs grouped by category
+- `src/main.py` — main sync flow and project cache refresh
+- `src/config_loader.py` — YAML config loading and validation
+- `src/confluence_client.py` — Confluence API access
+- `src/page_parser.py` — page ID extraction from Confluence URLs
+- `src/markdown_builder.py` — AI-friendly Markdown generation
+- `src/file_writer.py` — category-based file output
+- `src/index_builder.py` — root and category index generation
 
 ---
 
@@ -317,7 +317,6 @@ Example prompts:
 
 - `Based on the Enhanced Price Controls documentation, explain how this flow works and what rules or constraints should be covered in tests.`
 - `According to the API v4 Products Search documentation, what request parameters, filters, and response behaviors should be considered here?`
-- `Using the Enhanced Price Controls documentation, what edge cases and validation scenarios should be covered in automated tests?`
 - `Before changing this logic, are there any documented constraints in API v4 Products Search that we should take into account?`
 - `Based on the documented behavior of Enhanced Price Controls, what regression risks should we consider for this change?`
 
@@ -325,8 +324,8 @@ Example prompts:
 
 # AI Assistant Guidance
 
-This tool works best when the IDE AI assistant is explicitly instructed to treat the project's `kb/` directory as 
-the primary internal documentation source when it exists.
+To get the best results, the IDE AI assistant should be explicitly instructed to treat the project's `kb/` directory 
+as the primary internal documentation source when it exists.
 
 The goal is not only to improve documentation-based Q&A, but also to make internal documentation part of the working 
 project context, so the assistant can use it during everyday engineering tasks such as understanding flows, 
