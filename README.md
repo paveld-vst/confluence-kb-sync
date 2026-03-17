@@ -376,6 +376,7 @@ Prefer specific documented rules, constraints, examples, and implementation deta
 If a relevant documentation file is already open or explicitly attached in chat context, use it as the primary source before 
 searching more broadly.
 ```
+
 For more reliable results, it is recommended to use both **Global** and **Workspace** Copilot instructions.
 
 - **Global instructions** define the general behavior for treating `kb/` as internal project documentation.
