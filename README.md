@@ -329,10 +329,10 @@ For best results, use prompts that ask for:
 
 Example prompts:
 
-- `Based on the Enhanced Price Controls documentation in this project, explain how this feature works, including backend, frontend, calculation logic, and key constraints.`
-- `According to the API v4 Products Search documentation, what request parameters, filters, and response behaviors should be considered here?`
-- `Before changing this logic, are there any documented constraints in API v4 Products Search that we should take into account?`
-- `Based on the documented behavior of Enhanced Price Controls, what regression risks should we consider for this change?`
+- `Based on the Enhanced Price Controls documentation in this project, give me a detailed explanation of the feature, including backend, frontend, calculation logic, UI behavior, and key constraints.`
+- `Based on the API v4 Products Search documentation in this project, explain the documented request parameters, filters, response behavior, and important implementation constraints.`
+- `Based on the API v4 Products Search documentation in this project, what documented rules, constraints, and edge cases should be reviewed before changing this logic?`
+- `Based on the v4/purchase and Split Payment documentation in this project, explain what v4/purchase needs to support Split Payment for Virtual Bookstore and Cashier, including key constraints and edge cases.`
 
 ---
 
@@ -373,8 +373,8 @@ general codebase context.
 When multiple documentation files are relevant, combine them into one detailed answer.
 Prefer specific documented rules, constraints, examples, and implementation details over generic summaries.
 
-If a relevant documentation file is already open or explicitly attached in chat context, use it as the primary source before s
-earching more broadly.
+If a relevant documentation file is already open or explicitly attached in chat context, use it as the primary source before 
+searching more broadly.
 ```
 For more reliable results, it is recommended to use both **Global** and **Workspace** Copilot instructions.
 
@@ -388,7 +388,7 @@ In practice, this combination may improve how Copilot uses project documentation
 
 # Security Notes
 
-- never commit `config/config.yaml` with real credentials!!!!!!!
+- never commit `config/config.yaml` with real credentials
 - never commit API tokens
 - keep the shared KB directory out of Git
 - keep project-level generated `kb/` folders out of Git unless there is a specific reason to version them
