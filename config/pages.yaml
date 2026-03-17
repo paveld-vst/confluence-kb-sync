@@ -18,6 +18,11 @@ api:
   - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/4744808827/V4+Api+Keys
   - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/19572597/Booklist+Manager+Jobs+API
   - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/3306455045/Directory+Search+API
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/19572971/V4+Purchases+API+Bulk
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/3654320140/v4+Purchase+API+POST
+  - https://vitalsource.atlassian.net/wiki/spaces/ZAI/pages/4591419926/V4+Purchases+API+Bulk
+  - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/4403626183/V4+Purchase+Support+for+Cashier+Docs
+  - https://vitalsource.atlassian.net/wiki/spaces/ZAI/pages/4591419912/V4+Bulk+Purchases
 
 deployment_and_env:
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/3518955521/Manage+Development+Process
@@ -42,6 +47,8 @@ business_flows:
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4115529794/2025-02-11+-+Billing+Files+Not+Delivered
   - https://vitalsource.atlassian.net/wiki/spaces/apidocs/pages/5060165656/V4+System+User+Price+Type+Access+Levels+API+Overview
   - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/4869488656/Enhanced+Price+Controls+Overview#What-is-Enhanced-Price-Controls-(EPC)%3F
+  - https://vitalsource.atlassian.net/wiki/spaces/VFD/pages/4969201669/SPLIT+PAYMENT+-+Requirements+for+Store+Orders+Files
+  - https://vitalsource.atlassian.net/wiki/spaces/CON/pages/5232558091/Manage+Support+for+Virtual+Store+Split+Payments
 
 policies_and_processes:
   - https://vitalsource.atlassian.net/wiki/spaces/BOOKSHELF/pages/681017345/Engineering+Cheat+Sheet

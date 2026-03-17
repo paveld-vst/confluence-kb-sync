@@ -1,5 +1,19 @@
 # Confluence KB Sync
 
+> Hello, brave reader.
+>
+> You have just discovered a still-slightly-chaotic but already usable MVP.
+> It is not fully polished, not deeply battle-tested, and was originally built on Windows — so if you are trying it on macOS, you are also helping science.
+>
+> That said, the tool is already available for early testing and experimentation, and I genuinely hope it can be useful in your daily work.
+>
+> If something looks strange, breaks unexpectedly, or behaves like it was coded late at night... first, please accept my apologies. Second, feel free to investigate it yourself like a true engineer. That was a joke. Mostly.
+>
+> If you have feedback, ideas, questions, or improvements, please reach out — I would be very happy to hear from you.
+>
+> — Pavel Dorojchin 
+
+
 Confluence KB Sync is a lightweight Python tool that synchronizes selected Confluence Cloud pages into local 
 Markdown files and turns them into an AI-friendly knowledge layer inside your project.
 
@@ -315,7 +329,7 @@ For best results, use prompts that ask for:
 
 Example prompts:
 
-- `Based on the Enhanced Price Controls documentation, explain how this flow works and what rules or constraints should be covered in tests.`
+- `Based on the Enhanced Price Controls documentation in this project, explain how this feature works, including backend, frontend, calculation logic, and key constraints.`
 - `According to the API v4 Products Search documentation, what request parameters, filters, and response behaviors should be considered here?`
 - `Before changing this logic, are there any documented constraints in API v4 Products Search that we should take into account?`
 - `Based on the documented behavior of Enhanced Price Controls, what regression risks should we consider for this change?`
@@ -331,28 +345,44 @@ The goal is not only to improve documentation-based Q&A, but also to make intern
 project context, so the assistant can use it during everyday engineering tasks such as understanding flows, 
 writing tests, reviewing changes, suggesting fixes, and helping with implementation work.
 
-A typical guidance rule may look like this:
+A typical guidance rule for GLOBAL config may look like this:
 
 ```text
 If the current project contains a directory named "kb" at the project root,
-treat it as the primary source of truth for internal documentation.
+treat it as the official internal documentation for that project.
 
-For any question or task related to APIs, flows, deployment, business logic, environments, permissions, or system behavior:
+For any questions related to APIs, business logic, flows, deployment, or system behavior:
 
-1. First inspect the most relevant files in the "kb" directory before answering.
-2. Use documentation details as the main basis for the answer.
-3. Treat documented flows, constraints, rules, and exceptions as more important than general assumptions.
-4. Provide a thorough and structured response, not a brief summary.
-5. Include concrete rules, constraints, edge cases, and exceptions when they are documented.
-6. Synthesize information from multiple documentation files when needed.
-7. Do not stop at a high-level overview if the documentation contains implementation-relevant details.
-8. Use the documentation not only for answering questions, but also for helping with tests, fixes, and code changes.
-9. Only omit details when the user explicitly asks for a short answer.
-10. Do not mention the "kb" directory or file paths unless the user asks for sources.
+1. Actively analyze relevant files inside the "kb" directory.
+2. Base answers strictly on those files when they exist.
+3. Prefer documentation content over general knowledge.
+4. Provide comprehensive, structured, and detailed explanations.
+5. Do not provide generic summaries when specific documented rules or constraints are available.
+6. Use the documentation not only for answering questions, but also for helping with tests, fixes, and code changes.
+7. Do NOT explicitly mention the "kb" directory or reference file paths in the response unless the user asks for sources.
 
-If documentation is incomplete or conflicting, clearly say so.
 If no "kb" directory exists, ignore these rules.
 ```
+
+And for WORKSPACE config like this:
+
+```text
+In this project, if documentation relevant to the question exists in the root "kb" directory, prioritize it before relying on 
+general codebase context.
+
+When multiple documentation files are relevant, combine them into one detailed answer.
+Prefer specific documented rules, constraints, examples, and implementation details over generic summaries.
+
+If a relevant documentation file is already open or explicitly attached in chat context, use it as the primary source before s
+earching more broadly.
+```
+For more reliable results, it is recommended to use both **Global** and **Workspace** Copilot instructions.
+
+- **Global instructions** define the general behavior for treating `kb/` as internal project documentation.
+- **Workspace instructions** reinforce that behavior for the current project and help the assistant prioritize relevant local documentation more consistently.
+
+In practice, this combination may improve how Copilot uses project documentation as context.
+
 
 ---
 
