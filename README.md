@@ -330,7 +330,7 @@ For best results, use prompts that ask for:
 Example prompts:
 
 - `Based on the Enhanced Price Controls documentation in this project, give me a detailed explanation of the feature, including backend, frontend, calculation logic, UI behavior, and key constraints.`
-- `Based on the API v4 Products Search documentation in this project, explain the documented request parameters, filters, response behavior, and important implementation constraints.`
+- `Based on the Enhanced Price Controls documentation in project, what UI test scenarios should be covered in Cypress for this feature, including key user flows, validations, and edge cases?`
 - `Based on the API v4 Products Search documentation in this project, what documented rules, constraints, and edge cases should be reviewed before changing this logic?`
 - `Based on the v4/purchase and Split Payment documentation in this project, explain what v4/purchase needs to support Split Payment for Virtual Bookstore and Cashier, including key constraints and edge cases.`
 
