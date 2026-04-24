@@ -98,6 +98,7 @@ def main():
         failed_paths = []
 
         for raw_path in args.project_path:
+            project_kb_path = None
             try:
                 project_path = Path(raw_path).expanduser().resolve()
 
@@ -119,9 +120,12 @@ def main():
             except (OSError, shutil.Error) as e:
                 print(f"  ✖ Failed for project path: {raw_path}")
                 print(f"    Reason: {e}")
-                if project_kb_path.exists():
-                    shutil.rmtree(project_kb_path)
-                    print(f"  [cleanup] Removed partially copied KB: {project_kb_path}")
+                if project_kb_path is not None and project_kb_path.exists():
+                    try:
+                        shutil.rmtree(project_kb_path)
+                        print(f"  [cleanup] Removed partially copied KB: {project_kb_path}")
+                    except OSError as cleanup_error:
+                        print(f"  [cleanup] Failed to remove partially copied KB: {cleanup_error}")
                 failed_paths.append(raw_path)
 
         if failed_paths:
