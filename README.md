@@ -247,7 +247,7 @@ python src/main.py
 
 This will rebuild the shared KB in the configured output directory.
 
-## Sync shared knowledge base and refresh project cache
+## Sync shared knowledge base and refresh one project cache
 
 ### Windows
 
@@ -261,11 +261,31 @@ python src/main.py --project-path C:/vst/vst-ui-tests
 python src/main.py --project-path /Users/your.name/projects/vst-ui-tests
 ```
 
+## Sync shared knowledge base and refresh multiple projects at once
+
+### Windows
+
+```bash
+python src/main.py --project-path C:/vst/repo1 C:/vst/repo2 C:/vst/repo3
+```
+
+### macOS / Linux
+
+```bash
+python src/main.py --project-path ~/projects/repo1 ~/projects/repo2 ~/projects/repo3
+```
+
 This will:
 
-- rebuild the shared KB
+- rebuild the shared KB once
 - generate `_index.md` files
-- recreate the project's `kb/` directory from the shared KB
+- recreate the `kb/` directory in each specified project from the same shared KB
+
+## Note on duplicate pages
+
+If `pages.yaml` contains multiple URLs pointing to the same Confluence page (for example, different anchor links or comment links to the same page), the tool will sync that page only once and skip the duplicates with a warning in the output.
+
+This deduplication is global across all categories. If the same page is listed under multiple categories, it will be written only to the first category where it appears. This is intentional — each page exists in one place in the knowledge base.
 
 ---
 
@@ -288,7 +308,7 @@ confluence_docs/
     └── Order_Lifecycle.md
 ```
 
-The selected project will then receive:
+Each specified project will then receive:
 
 ```text
 your-project/
@@ -425,12 +445,29 @@ Current limitations of the MVP:
 Possible future improvements:
 
 - scheduled synchronization
-- multi-project update support
 - document chunking by sections
 - smarter extraction of key facts and constraints
 - better normalization of Confluence content
 - richer AI-friendly summary files
 - semantic or local search over synced documentation
+- skill-based distribution for team sharing
+
+---
+
+# Changelog
+
+## v0.2
+
+- added multi-project sync support — pass multiple paths via `--project-path` to refresh several projects in one run
+- added duplicate page detection — URLs pointing to the same Confluence page (e.g. anchor or comment links) are now deduplicated automatically, with a warning in the output
+
+## v0.1
+
+- initial MVP release
+- manual sync of selected Confluence pages via REST API
+- HTML to Markdown conversion
+- shared KB model with project-level cache
+- category-based organization with index generation
 
 ---
 
@@ -438,11 +475,12 @@ Possible future improvements:
 
 This project is currently in active development.
 
-Current state: **MVP v0.1**
+Current state: **v0.2**
 
 - manual sync works
 - shared KB refresh works
-- project cache generation works
+- multi-project cache generation works
+- duplicate page detection works
 - index generation works
 - suitable for early internal usage and further iteration
 - already useful as an AI-friendly documentation context layer inside the IDE
