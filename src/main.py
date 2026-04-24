@@ -90,7 +90,6 @@ def main():
 
     write_indexes(output_path, category_map)
     print("\n[OK] Index files generated")
-    print("\n=== Confluence KB Sync finished ===")
 
     if args.project_path:
         if not shared_kb_path.exists():
@@ -120,13 +119,19 @@ def main():
             except (OSError, shutil.Error) as e:
                 print(f"  ✖ Failed for project path: {raw_path}")
                 print(f"    Reason: {e}")
+                if project_kb_path.exists():
+                    shutil.rmtree(project_kb_path)
+                    print(f"  [cleanup] Removed partially copied KB: {project_kb_path}")
                 failed_paths.append(raw_path)
 
         if failed_paths:
             print(f"\n[WARNING] KB cache was not created for {len(failed_paths)} project(s):")
             for p in failed_paths:
                 print(f"  - {p}")
+            print("\n=== Confluence KB Sync finished with errors ===")
             sys.exit(1)
+
+    print("\n=== Confluence KB Sync finished ===")
 
 
 if __name__ == "__main__":
