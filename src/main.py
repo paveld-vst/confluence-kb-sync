@@ -41,7 +41,7 @@ def main():
     )
 
     output_path = output_cfg["path"]
-    shared_kb_path = Path(output_path).expanduser()
+    shared_kb_path = Path(output_path).expanduser().resolve()
 
     if shared_kb_path.exists():
         shutil.rmtree(shared_kb_path)
@@ -53,6 +53,10 @@ def main():
     for category, urls in pages.items():
         print(f"\nCategory: {category}")
         category_map[category] = []
+
+        if not urls:
+            print(f"  ⚠ No URLs defined for category: {category}, skipping")
+            continue
 
         for url in urls:
             try:
