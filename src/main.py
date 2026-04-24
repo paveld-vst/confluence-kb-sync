@@ -1,5 +1,6 @@
 import argparse
 import shutil
+import sys
 from pathlib import Path
 
 from config_loader import load_yaml
@@ -40,7 +41,7 @@ def main():
     )
 
     output_path = output_cfg["path"]
-    shared_kb_path = Path(output_path).expanduser()
+    shared_kb_path = Path(output_path).expanduser().absolute()
 
     if shared_kb_path.exists():
         shutil.rmtree(shared_kb_path)
@@ -52,6 +53,10 @@ def main():
     for category, urls in pages.items():
         print(f"\nCategory: {category}")
         category_map[category] = []
+
+        if not urls:
+            print(f"  ⚠ No URLs defined for category: {category}, skipping")
+            continue
 
         for url in urls:
             try:
@@ -89,29 +94,58 @@ def main():
 
     write_indexes(output_path, category_map)
     print("\n[OK] Index files generated")
-    print("\n=== Confluence KB Sync finished ===")
 
     if args.project_path:
         if not shared_kb_path.exists():
-            raise FileNotFoundError(f"Shared KB not found at {shared_kb_path}")
+            print(f"[ERROR] Shared KB not found at {shared_kb_path}")
+            print("\n=== Confluence KB Sync finished with errors ===")
+            sys.exit(1)
+
+        failed_paths = []
 
         for raw_path in args.project_path:
-            project_path = Path(raw_path).expanduser().resolve()
+            project_kb_path = None
+            try:
+                project_path = Path(raw_path).expanduser().resolve()
 
-            if not project_path.exists():
-                raise FileNotFoundError(f"Project path not found: {project_path}")
+                if not project_path.exists():
+                    raise FileNotFoundError(f"Project path not found: {project_path}")
 
-            if not project_path.is_dir():
-                raise NotADirectoryError(f"Project path is not a directory: {project_path}")
+                if not project_path.is_dir():
+                    raise NotADirectoryError(f"Project path is not a directory: {project_path}")
 
-            project_kb_path = project_path / "kb"
+                project_kb_path = project_path / "kb"
 
-            if project_kb_path.exists():
-                shutil.rmtree(project_kb_path)
-                print(f"[OK] Removed old project KB cache: {project_kb_path}")
+                if project_kb_path.exists():
+                    if project_kb_path.is_symlink():
+                        raise NotADirectoryError(f"Expected a real directory at {project_kb_path}, but found a symlink")
+                    if not project_kb_path.is_dir():
+                        raise NotADirectoryError(f"Expected a directory at {project_kb_path}, but found a non-directory")
+                    shutil.rmtree(project_kb_path)
+                    print(f"[OK] Removed old project KB cache: {project_kb_path}")
 
-            shutil.copytree(shared_kb_path, project_kb_path)
-            print(f"[OK] Project KB cache created at: {project_kb_path}")
+                shutil.copytree(shared_kb_path, project_kb_path)
+                print(f"[OK] Project KB cache created at: {project_kb_path}")
+
+            except (OSError, shutil.Error) as e:
+                print(f"  ✖ Failed for project path: {raw_path}")
+                print(f"    Reason: {e}")
+                if project_kb_path is not None and project_kb_path.exists():
+                    try:
+                        shutil.rmtree(project_kb_path)
+                        print(f"  [cleanup] Removed partially copied KB: {project_kb_path}")
+                    except OSError as cleanup_error:
+                        print(f"  [cleanup] Failed to remove partially copied KB: {cleanup_error}")
+                failed_paths.append(raw_path)
+
+        if failed_paths:
+            print(f"\n[WARNING] KB cache was not created for {len(failed_paths)} project(s):")
+            for p in failed_paths:
+                print(f"  - {p}")
+            print("\n=== Confluence KB Sync finished with errors ===")
+            sys.exit(1)
+
+    print("\n=== Confluence KB Sync finished ===")
 
 
 if __name__ == "__main__":
