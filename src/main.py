@@ -95,23 +95,37 @@ def main():
         if not shared_kb_path.exists():
             raise FileNotFoundError(f"Shared KB not found at {shared_kb_path}")
 
+        failed_paths = []
+
         for raw_path in args.project_path:
-            project_path = Path(raw_path).expanduser().resolve()
+            try:
+                project_path = Path(raw_path).expanduser().resolve()
 
-            if not project_path.exists():
-                raise FileNotFoundError(f"Project path not found: {project_path}")
+                if not project_path.exists():
+                    raise FileNotFoundError(f"Project path not found: {project_path}")
 
-            if not project_path.is_dir():
-                raise NotADirectoryError(f"Project path is not a directory: {project_path}")
+                if not project_path.is_dir():
+                    raise NotADirectoryError(f"Project path is not a directory: {project_path}")
 
-            project_kb_path = project_path / "kb"
+                project_kb_path = project_path / "kb"
 
-            if project_kb_path.exists():
-                shutil.rmtree(project_kb_path)
-                print(f"[OK] Removed old project KB cache: {project_kb_path}")
+                if project_kb_path.exists():
+                    shutil.rmtree(project_kb_path)
+                    print(f"[OK] Removed old project KB cache: {project_kb_path}")
 
-            shutil.copytree(shared_kb_path, project_kb_path)
-            print(f"[OK] Project KB cache created at: {project_kb_path}")
+                shutil.copytree(shared_kb_path, project_kb_path)
+                print(f"[OK] Project KB cache created at: {project_kb_path}")
+
+            except Exception as e:
+                print(f"  ✖ Failed for project path: {raw_path}")
+                print(f"    Reason: {e}")
+                failed_paths.append(raw_path)
+
+        if failed_paths:
+            print(f"\n[WARNING] KB cache was not created for {len(failed_paths)} project(s):")
+            for p in failed_paths:
+                print(f"  - {p}")
+            exit(1)
 
 
 if __name__ == "__main__":
