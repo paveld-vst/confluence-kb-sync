@@ -285,6 +285,8 @@ This will:
 
 If `pages.yaml` contains multiple URLs pointing to the same Confluence page (for example, different anchor links or comment links to the same page), the tool will sync that page only once and skip the duplicates with a warning in the output.
 
+This deduplication is global across all categories. If the same page is listed under multiple categories, it will be written only to the first category where it appears. This is intentional — each page exists in one place in the knowledge base.
+
 ---
 
 # Generated Output
@@ -306,7 +308,7 @@ confluence_docs/
     └── Order_Lifecycle.md
 ```
 
-The selected project will then receive:
+Each specified project will then receive:
 
 ```text
 your-project/

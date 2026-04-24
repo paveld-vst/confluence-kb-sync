@@ -61,7 +61,6 @@ def main():
                     print(f"  ⚠ Skipping duplicate page ID {page_id}: {url}")
                     continue
 
-                seen_page_ids.add(page_id)
                 page = client.get_page(page_id)
 
                 title = page["title"]
@@ -80,6 +79,7 @@ def main():
                     content=markdown,
                 )
 
+                seen_page_ids.add(page_id)
                 category_map[category].append(title)
                 print(f"  ✔ Synced: {title} -> {file_path}")
 
@@ -96,7 +96,14 @@ def main():
             raise FileNotFoundError(f"Shared KB not found at {shared_kb_path}")
 
         for raw_path in args.project_path:
-            project_path = Path(raw_path)
+            project_path = Path(raw_path).expanduser().resolve()
+
+            if not project_path.exists():
+                raise FileNotFoundError(f"Project path not found: {project_path}")
+
+            if not project_path.is_dir():
+                raise NotADirectoryError(f"Project path is not a directory: {project_path}")
+
             project_kb_path = project_path / "kb"
 
             if project_kb_path.exists():
