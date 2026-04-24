@@ -93,7 +93,9 @@ def main():
 
     if args.project_path:
         if not shared_kb_path.exists():
-            raise FileNotFoundError(f"Shared KB not found at {shared_kb_path}")
+            print(f"[ERROR] Shared KB not found at {shared_kb_path}")
+            print("\n=== Confluence KB Sync finished with errors ===")
+            sys.exit(1)
 
         failed_paths = []
 
@@ -111,6 +113,8 @@ def main():
                 project_kb_path = project_path / "kb"
 
                 if project_kb_path.exists():
+                    if not project_kb_path.is_dir():
+                        raise NotADirectoryError(f"Expected a directory at {project_kb_path}, but found a file or symlink")
                     shutil.rmtree(project_kb_path)
                     print(f"[OK] Removed old project KB cache: {project_kb_path}")
 
