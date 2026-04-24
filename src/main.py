@@ -1,5 +1,6 @@
 import argparse
 import shutil
+import sys
 from pathlib import Path
 
 from config_loader import load_yaml
@@ -116,7 +117,7 @@ def main():
                 shutil.copytree(shared_kb_path, project_kb_path)
                 print(f"[OK] Project KB cache created at: {project_kb_path}")
 
-            except Exception as e:
+            except (OSError, shutil.Error) as e:
                 print(f"  ✖ Failed for project path: {raw_path}")
                 print(f"    Reason: {e}")
                 failed_paths.append(raw_path)
@@ -125,7 +126,7 @@ def main():
             print(f"\n[WARNING] KB cache was not created for {len(failed_paths)} project(s):")
             for p in failed_paths:
                 print(f"  - {p}")
-            exit(1)
+            sys.exit(1)
 
 
 if __name__ == "__main__":
