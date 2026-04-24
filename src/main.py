@@ -41,7 +41,7 @@ def main():
     )
 
     output_path = output_cfg["path"]
-    shared_kb_path = Path(output_path).expanduser().resolve()
+    shared_kb_path = Path(output_path).expanduser().absolute()
 
     if shared_kb_path.exists():
         shutil.rmtree(shared_kb_path)
@@ -117,8 +117,10 @@ def main():
                 project_kb_path = project_path / "kb"
 
                 if project_kb_path.exists():
+                    if project_kb_path.is_symlink():
+                        raise NotADirectoryError(f"Expected a real directory at {project_kb_path}, but found a symlink")
                     if not project_kb_path.is_dir():
-                        raise NotADirectoryError(f"Expected a directory at {project_kb_path}, but found a file or symlink")
+                        raise NotADirectoryError(f"Expected a directory at {project_kb_path}, but found a non-directory")
                     shutil.rmtree(project_kb_path)
                     print(f"[OK] Removed old project KB cache: {project_kb_path}")
 
