@@ -15,8 +15,9 @@ def parse_args():
     parser.add_argument(
         "--project-path",
         type=str,
+        nargs="+",
         required=False,
-        help="Optional path to project where KB cache should be copied"
+        help="Optional path(s) to projects where KB cache should be copied"
     )
     return parser.parse_args()
 
@@ -46,6 +47,7 @@ def main():
         print(f"[OK] Removed old shared KB: {shared_kb_path}")
 
     category_map = {}
+    seen_page_ids = set()
 
     for category, urls in pages.items():
         print(f"\nCategory: {category}")
@@ -54,6 +56,11 @@ def main():
         for url in urls:
             try:
                 page_id = extract_page_id(url)
+
+                if page_id in seen_page_ids:
+                    print(f"  ⚠ Skipping duplicate page ID {page_id}: {url}")
+                    continue
+
                 page = client.get_page(page_id)
 
                 title = page["title"]
@@ -72,6 +79,7 @@ def main():
                     content=markdown,
                 )
 
+                seen_page_ids.add(page_id)
                 category_map[category].append(title)
                 print(f"  ✔ Synced: {title} -> {file_path}")
 
@@ -84,19 +92,26 @@ def main():
     print("\n=== Confluence KB Sync finished ===")
 
     if args.project_path:
-        project_path = Path(args.project_path)
-        project_kb_path = project_path / "kb"
-
         if not shared_kb_path.exists():
             raise FileNotFoundError(f"Shared KB not found at {shared_kb_path}")
 
-        if project_kb_path.exists():
-            shutil.rmtree(project_kb_path)
-            print(f"[OK] Removed old project KB cache: {project_kb_path}")
+        for raw_path in args.project_path:
+            project_path = Path(raw_path).expanduser().resolve()
 
-        shutil.copytree(shared_kb_path, project_kb_path)
+            if not project_path.exists():
+                raise FileNotFoundError(f"Project path not found: {project_path}")
 
-        print(f"\n[OK] Project KB cache created at: {project_kb_path}")
+            if not project_path.is_dir():
+                raise NotADirectoryError(f"Project path is not a directory: {project_path}")
+
+            project_kb_path = project_path / "kb"
+
+            if project_kb_path.exists():
+                shutil.rmtree(project_kb_path)
+                print(f"[OK] Removed old project KB cache: {project_kb_path}")
+
+            shutil.copytree(shared_kb_path, project_kb_path)
+            print(f"[OK] Project KB cache created at: {project_kb_path}")
 
 
 if __name__ == "__main__":
